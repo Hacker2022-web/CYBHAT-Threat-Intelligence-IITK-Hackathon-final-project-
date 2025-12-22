@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Intelligence Report Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="navbar">
+                <div class="brand-wrapper">
+                    <div class="cyber-logo">
+                        <i class="fas fa-shield-alt fa-2x"></i>
+                        <span class="brand-name">CYBHAT</span>
+                    </div>
+                    <div class="nav-links">
+                        <a href="#" class="nav-link">Docs</a>
+                        <a href="#" class="nav-link">Enterprise</a>
+                        <a href="#" class="nav-link">Support</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle"></button>
+            </nav>
+            <div class="hero-section">
+                <h1>Advanced Threat Intelligence Analysis</h1>
+                <p class="hero-subtitle">Enterprise-grade security analysis powered by AI-driven threat detection</p>
+            </div>
+        </header>
+
+        <main class="analysis-section">
+            <div class="analysis-card">
+                <div class="card-header">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Threat Analysis Portal</h3>
+                </div>
+                <form action="/" method="POST" enctype="multipart/form-data" onsubmit="showLoading()">
+                    <div class="upload-container">
+                        <div class="drop-zone" id="dropZone">
+                            <div class="upload-content">
+                                <i class="fas fa-file-pdf fa-3x"></i>
+                                <p class="upload-instructions">Drag & Drop or <span class="browse-link">Browse Files</span></p>
+                                <p class="file-support">Supports PDF documents (Max 50MB each)</p>
+                            </div>
+                            <input type="file" name="pdf_files" id="fileInput" hidden multiple
+                                   onchange="showFilesSelected(this)" accept=".pdf">
+                        </div>
+                        <div class="selected-files-list" id="fileList"></div>
+                    </div>
+                    
+                    <div class="category-filter">
+                        <h4><i class="fas fa-filter"></i> Filter Report Sections</h4>
+                        <div class="checkbox-group">
+                            {% for category in categories %}
+                            <label>
+                                <input type="checkbox" 
+                                    name="categories" 
+                                    value="{{ category }}"
+                                    {% if category in selected_categories %}checked{% endif %}>
+                                {% if category == 'IoCs' %}
+                                    <i class="fas fa-network-wired"></i> IoCs
+                                {% elif category == 'TTPs' %}
+                                    <i class="fas fa-robot"></i> TTPs
+                                {% elif category == 'Malware' %}
+                                    <i class="fas fa-bug"></i> Malware
+                                {% elif category == 'Threat Actors' %}
+                                    <i class="fas fa-user-secret"></i> Actors
+                                {% elif category == 'Targeted Entities' %}
+                                    <i class="fas fa-bullseye"></i> Targets
+                                {% endif %}
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <button type="submit" class="analyze-btn primary-action">
+                        <span class="btn-content">
+                            <i class="fas fa-rocket"></i>
+                            Analyze Documents
+                        </span>
+                        <div class="loading-spinner" id="loadingSpinner"></div>
+                    </button>
+                </form>
+            </div>
+
+            {% if threat_data %}
+            <div class="report-selector">
+                <h3>Processed Reports:</h3>
+                <div class="report-buttons">
+                    {% for report in threat_data %}
+                    <button type="button" class="report-btn {% if loop.first %}active{% endif %}" 
+                            data-report="{{ loop.index0 }}">{{ report.original_filename }}</button>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="results-panel">
+                {% for report in threat_data %}
+                <div class="report-content {% if loop.first %}active{% endif %}" data-report="{{ loop.index0 }}">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-file-certificate"></i> Threat Analysis Report</h2>
+                        <div class="report-meta">
+                            <span class="report-date">{{ report.timestamp }}</span>
+                            <span class="report-id">ID: {{ report.report_id }}</span>
+                        </div>
+                    </div>
+
+                    {% for category, data in report.items() %}
+                    {% if category not in ['original_filename', 'report_filename', 'timestamp', 'report_id'] %}
+                    <div class="result-section">
+                        <div class="result-header">
+                            <div class="result-badge">{{ category }}</div>
+                            <i class="fas fa-{{ 'shield-alt' if category == 'TTPs' else 'bug' }}"></i>
+                        </div>
+                        
+                        {% if data is mapping %}
+                            <div class="grid-container">
+                                {% for key, value in data.items() %}
+                                <div class="data-card">
+                                    <div class="data-label">{{ key }}</div>
+                                    <div class="data-value">
+                                        {% if value is iterable and value is not string %}
+                                            {% for item in value %}
+                                            <span class="data-item">{{ item }}</span>
+                                            {% endfor %}
+                                        {% else %}
+                                            {{ value }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="data-value">{{ data }}</div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+                    <div class="text-center" style="margin: 2rem 0;">
+                        {% if report.report_filename %}
+                        <a href="{{ url_for('download', filename=report.report_filename) }}" 
+                           class="analyze-btn"
+                           id="downloadBtn"
+                           download="{{ report.report_filename }}">
+                            <i class="fas fa-download"></i> EXPORT {{ report.original_filename|upper }}
+                        </a>
+                        {% else %}
+                        <div class="download-error">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Report generation failed - No valid data found
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="cyber-logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="brand-name">CYBHAT</span>
+                    </div>
+                    <p class="brand-tagline">
+                        Safeguarding digital frontiers through advanced threat intelligence
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Compliance</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2025 CYBHAT. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function showFilesSelected(input) {
+            const fileList = document.getElementById('fileList');
+            fileList.innerHTML = '';
+            
+            if (input.files.length > 0) {
+                const list = document.createElement('ul');
+                list.className = 'file-items';
+                
+                Array.from(input.files).forEach(file => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<i class="fas fa-file-pdf"></i> ${file.name}`;
+                    list.appendChild(li);
+                });
+                
+                fileList.appendChild(list);
+            }
+        }
+
+        // Drag & Drop functionality
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            fileInput.files = e.dataTransfer.files;
+            showFilesSelected(fileInput);
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateToggleIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
+        });
+
+        function updateToggleIcon(theme) {
+            themeToggle.innerHTML = theme === 'dark' 
+                ? '<i class="fas fa-moon"></i>' 
+                : '<i class="fas fa-sun"></i>';
+        }
+
+        // Loading State
+        function showLoading() {
+            const submitBtn = document.querySelector('.analyze-btn');
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+            document.getElementById('loadingSpinner').style.display = 'block';
+        }
+
+        // Report navigation
+        document.querySelectorAll('.report-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.report-btn, .report-content').forEach(el => {
+                    el.classList.remove('active');
+                });
+                
+                const reportIndex = btn.dataset.report;
+                btn.classList.add('active');
+                document.querySelector(`.report-content[data-report="${reportIndex}"]`).classList.add('active');
+            });
+        });
+
+        // Category filter persistence
+        document.addEventListener("DOMContentLoaded", function () {
+            const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
+            
+            function updateVisibility() {
+                const selectedCategories = new Set();
+                checkboxes.forEach(cb => {
+                    if (cb.checked) {
+                        selectedCategories.add(cb.value);
+                    }
+                });
+
+                document.querySelectorAll('.result-section').forEach(section => {
+                    const category = section.querySelector('.result-badge').innerText.trim();
+                    section.style.display = selectedCategories.has(category) ? "block" : "none";
+                });
+            }
+
+            checkboxes.forEach(cb => {
+                cb.addEventListener("change", updateVisibility);
+            });
+            
+            updateVisibility();
+        });
+    </script>
+</body>
+</html>
