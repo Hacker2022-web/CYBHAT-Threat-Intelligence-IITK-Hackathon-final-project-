@@ -81,3 +81,10 @@ Run the Flask application using the command line:
 ```bash
 python app.py
 #Open your web browser and go to: (http://127.0.0.1:5000)
+```
+![Dashboard Screenshot](assets/dashboard_demo.png)
+![Another View](dashboard_demo1.png)
+*Fig 1. Drag and Drop Interface*
+
+## 📘 Project Documentation
+For a deep dive into the problem statement, methodology, and future scope, view our **[Hackathon Presentation Slides](docs/CYBHAT_Presentation.pdf)**.
