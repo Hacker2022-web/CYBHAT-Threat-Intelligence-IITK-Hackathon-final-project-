@@ -1,53 +1,50 @@
-# CYBHAT-Threat-Intelligence-IITK-Hackathon-final-project-
-# CYBHAT: Automated Threat Intelligence Extractor
-## 👥 Team CYBHAT [This project was devloped in Jan 2025 so it might contain some bugs]
-[cite_start]Developed for the **HACK IITK Cybersecurity Challenge 2024**[cite: 146].
+# CYBHAT-Threat-Intelligence-IITK-Hackathon-final-project
 
-* [cite_start]**Sahil Sudhir Dehadray[Team leader]** [cite: 145]
-* [cite_start]**Abhinav Galagali** [cite: 148]
-* [cite_start]**Djatassiba Yaovi Joel** [cite: 150]
+# CYBHAT: Automated Threat Intelligence Extractor
+
+![Status](https://img.shields.io/badge/Status-Prototype-blue) ![Python](https://img.shields.io/badge/Python-3.7%2B-green) ![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
+## 👥 Team CYBHAT
+*This project was developed in Jan 2025 for the **HACK IITK Cybersecurity Challenge 2024**.*
+
+* **Sahil Sudhir Dehadray** (Team Leader)
+* **Abhinav Galagali**
+* **Djatassiba Yaovi Joel**
+* **Tharun**
 
 ## 🙏 Acknowledgements
-* [cite_start]**C3iHub, IIT Kanpur**: For organizing the challenge and providing the problem statement[cite: 133, 135].
+* **C3iHub, IIT Kanpur**: For organizing the challenge and providing the problem statement.
 * **Powered by**: SpaCy, PyMuPDF, and the VirusTotal API.
-![Status](https://img.shields.io/badge/Status-Prototype-blue) ![Python](https://img.shields.io/badge/Python-3.7%2B-green) ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 ## 📋 Overview
 
-**CYBHAT** is an automated tool designed to extract actionable threat intelligence from unstructured data sources. [cite_start]It processes reports in **PDF, DOCX, and TXT** formats to identify and classify key threat indicators using Natural Language Processing (NLP) and Machine Learning[cite: 3, 20].
+**CYBHAT** is an automated tool designed to extract actionable threat intelligence from unstructured data sources. It processes reports in **PDF, DOCX, and TXT** formats to identify and classify key threat indicators using Natural Language Processing (NLP) and Machine Learning.
 
-[cite_start]Manual analysis struggles to keep pace with the volume of cyber threat data[cite: 166]. [cite_start]This tool bridges that gap by rapidly identifying Indicators of Compromise (IoCs), TTPs, and threat actors, transforming reactive defenses into proactive strategies[cite: 311].
-
+Manual analysis struggles to keep pace with the volume of cyber threat data. This tool bridges that gap by rapidly identifying Indicators of Compromise (IoCs), TTPs, and threat actors, transforming reactive defenses into proactive strategies.
 
 ## ✨ Key Features
 
-* [cite_start]**Multi-Format Support:** Extracts text and intelligence from PDF (including scanned docs via OCR), DOCX, and TXT files[cite: 3, 122].
-* [cite_start]**IoC Extraction:** Uses regex to identify IPs, MAC addresses, Domains, URLs, File Hashes (MD5/SHA), and Registry Keys[cite: 63, 64, 69].
-* [cite_start]**MITRE ATT&CK Mapping:** Automatically maps text to specific tactics and techniques (e.g., Phishing, T1566) within the MITRE framework[cite: 75, 76].
-* [cite_start]**Malware & Actor Detection:** Leverages SpaCy NER and Transformer models to identify malware names and threat actors[cite: 79, 84].
-* [cite_start]**Data Enrichment:** Integrates with the VirusTotal API to enrich extracted malware data with metadata[cite: 81].
-* [cite_start]**JSON Export:** Outputs structured JSON files for easy integration with other security tools[cite: 5].
+* **Multi-Format Support:** Extracts text and intelligence from PDF (including scanned docs via OCR), DOCX, and TXT files.
+* **IoC Extraction:** Uses regex to identify IPs, MAC addresses, Domains, URLs, File Hashes (MD5/SHA), and Registry Keys.
+* **MITRE ATT&CK Mapping:** Automatically maps text to specific tactics and techniques (e.g., Phishing, T1566) within the MITRE framework.
+* **Malware & Actor Detection:** Leverages SpaCy NER and Transformer models to identify malware names and threat actors.
+* **Data Enrichment:** Integrates with the VirusTotal API to enrich extracted malware data with metadata.
+* **JSON Export:** Outputs structured JSON files for easy integration with other security tools.
 
 ## 🏗️ Architecture
 
 The application follows a linear pipeline: **Input Validation -> Text Extraction -> Intelligence Mining -> Output Generation**.
 
-
-> [cite_start]**Note:** The logic combines regex precision for IoCs with the flexibility of Transformer models for Named Entity Recognition[cite: 296].
+> **Note:** The logic combines regex precision for IoCs with the flexibility of Transformer models for Named Entity Recognition.
 
 ## ⚙️ Prerequisites
 
 Ensure you have the following installed:
-* [cite_start]Python 3.7+ [cite: 29]
-* [cite_start]Tesseract OCR (for scanning non-machine-readable PDFs) [cite: 122]
-
-## 🚀 Installation
+* Python 3.7+
+* Tesseract OCR (for scanning non-machine-readable PDFs)
+* VirusTotal API Key (optional for enrichment)
 
 ## 🛠️ Installation
-
-### Prerequisites
-* Python 3.7+
-* VirusTotal API Key (optional for enrichment)
 
 ### Steps
 
