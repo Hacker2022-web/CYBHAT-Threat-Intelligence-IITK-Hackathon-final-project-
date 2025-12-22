@@ -10,7 +10,6 @@
 * **Sahil Sudhir Dehadray** (Team Leader)
 * **Abhinav Galagali**
 * **Djatassiba Yaovi Joel**
-* **Tharun**
 
 ## 🙏 Acknowledgements
 * **C3iHub, IIT Kanpur**: For organizing the challenge and providing the problem statement.
@@ -36,6 +35,8 @@ Manual analysis struggles to keep pace with the volume of cyber threat data. Thi
 The application follows a linear pipeline: **Input Validation -> Text Extraction -> Intelligence Mining -> Output Generation**.
 
 > **Note:** The logic combines regex precision for IoCs with the flexibility of Transformer models for Named Entity Recognition.
+![System Flowchart](assets/flowchart.jpeg)
+*Fig 1. Logic flow of the extraction process*
 
 ## 📘 Documentation
 * **[Project Presentation](docs/CYBHAT_Presentation.pdf)**: High-level overview of the problem and solution.
