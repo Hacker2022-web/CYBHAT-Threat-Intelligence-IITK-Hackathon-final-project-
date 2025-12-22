@@ -1,6 +1,15 @@
 # CYBHAT-Threat-Intelligence-IITK-Hackathon-final-project-
 # CYBHAT: Automated Threat Intelligence Extractor
+## 👥 Team CYBHAT [This project was devloped in Jan 2025 so it might contain some bugs]
+[cite_start]Developed for the **HACK IITK Cybersecurity Challenge 2024**[cite: 146].
 
+* [cite_start]**Sahil Sudhir Dehadray[Team leader]** [cite: 145]
+* [cite_start]**Abhinav Galagali** [cite: 148]
+* [cite_start]**Djatassiba Yaovi Joel** [cite: 150]
+
+## 🙏 Acknowledgements
+* [cite_start]**C3iHub, IIT Kanpur**: For organizing the challenge and providing the problem statement[cite: 133, 135].
+* **Powered by**: SpaCy, PyMuPDF, and the VirusTotal API.
 ![Status](https://img.shields.io/badge/Status-Prototype-blue) ![Python](https://img.shields.io/badge/Python-3.7%2B-green) ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 ## 📋 Overview
@@ -52,11 +61,13 @@ Ensure you have the following installed:
     ```
     **
 
-## 💻 Usage
+## 🚀 Usage
 
-You can run the extractor via the Command Line Interface (CLI) or the Web Dashboard.
+Running the application is simple. CYBHAT comes with a built-in web dashboard for easy analysis.
 
-### Option 1: CLI
-Run the main script and follow the prompts to provide a file or folder path:
+### 1. Start the Server
+Run the Flask application using the command line:
+
 ```bash
-python threat_extractor.py
+python app.py
+#Open your web browser and go to: (http://127.0.0.1:5000)
