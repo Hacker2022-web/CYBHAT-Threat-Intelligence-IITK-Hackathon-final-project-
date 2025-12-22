@@ -43,23 +43,36 @@ Ensure you have the following installed:
 
 ## 🚀 Installation
 
-1.  **Clone the repository:**
+## 🛠️ Installation
+
+### Prerequisites
+* Python 3.7+
+* VirusTotal API Key (optional for enrichment)
+
+### Steps
+
+1.  **Clone the repository**
     ```bash
-    git clone [[https://github.com/Hacker2022-web/CYBHAT-Threat-Extractor.git](https://github.com/Hacker2022-web/CYBHAT-Threat-Intelligence-IITK-Hackathon-final-project-.git)]([https://github.com/Hacker2022-web/CYBHAT-Threat-Extractor.git](https://github.com/Hacker2022-web/CYBHAT-Threat-Intelligence-IITK-Hackathon-final-project-.git)
+    git clone [https://github.com/Hacker2022-web/CYBHAT-Threat-Extractor.git](https://github.com/Hacker2022-web/CYBHAT-Threat-Extractor.git)
     cd CYBHAT-Threat-Extractor
     ```
 
-2.  **Install Python dependencies:**
+2.  **Install Dependencies**
     ```bash
     pip install -r requirements.txt
     ```
-    *Dependencies include: `pymupdf`, `spacy`, `transformers`, `docx2txt`, `requests`*[cite: 9, 10, 14, 15, 16].
 
-3.  **Download the SpaCy language model:**
+3.  **Download NLP Models**
+    The project requires the SpaCy English language model:
     ```bash
     python -m spacy download en_core_web_sm
     ```
-    **
+
+4.  **Configure API Key**
+    Open `threat_analyzer.py` and add your VirusTotal API key to the `get_malware_metadata` function:
+    ```python
+    api_key = 'YOUR_API_KEY_HERE'
+    ```
 
 ## 🚀 Usage
 
