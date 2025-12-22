@@ -83,7 +83,7 @@ python app.py
 #Open your web browser and go to: (http://127.0.0.1:5000)
 ```
 ![Dashboard Screenshot](assets/dashboard_demo.png)
-![Another View](dashboard_demo1.png)
+![Another View](assets/dashboard_demo1.png)
 *Fig 1. Drag and Drop Interface*
 
 ## 📘 Project Documentation
