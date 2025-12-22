@@ -37,6 +37,10 @@ The application follows a linear pipeline: **Input Validation -> Text Extraction
 
 > **Note:** The logic combines regex precision for IoCs with the flexibility of Transformer models for Named Entity Recognition.
 
+## 📘 Documentation
+* **[Project Presentation](docs/CYBHAT_Presentation.pdf)**: High-level overview of the problem and solution.
+* **[Technical Report](docs/Technical_Report.pdf)**: Detailed explanation of the regex logic, extraction algorithms, and system limitations.
+
 ## ⚙️ Prerequisites
 
 Ensure you have the following installed:
@@ -88,7 +92,7 @@ python app.py
 
 ### 2. Analyze Reports
 1. Drag and drop your PDF threat reports into the upload zone.
-   > **Tip:** Don't have a report handy? Use the [sample_report.pdf](samples/sample_report.pdf) provided in the `samples/` folder to test the tool immediately.
+   > **Tip:** Don't have a report handy? Use the [sample_report.pdf](samples/Symantec-Shuckworm-Espionage-Group-Campaign-Against-Ukraine04-20-2022.pdf) provided in the `samples/` folder to test the tool immediately.
 
 ## 📘 Project Documentation
 For a deep dive into the problem statement, methodology, and future scope, view our **[Hackathon Presentation Slides](docs/CYBHAT_presentation.pdf)**.
