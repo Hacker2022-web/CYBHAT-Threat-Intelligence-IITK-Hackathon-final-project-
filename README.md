@@ -8,8 +8,8 @@
 *This project was developed in Jan 2025 for the **HACK IITK Cybersecurity Challenge 2024**.*
 
 * **Sahil Sudhir Dehadray** (Team Leader)
-* **Abhinav Galagali**
 * **Djatassiba Yaovi Joel**
+* **Abhinav Galagali**
 
 ## 🙏 Acknowledgements
 * **C3iHub, IIT Kanpur**: For organizing the challenge and providing the problem statement.
