@@ -45,7 +45,7 @@ Ensure you have the following installed:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/Hacker2022-web/CYBHAT-Threat-Extractor.git](https://github.com/Hacker2022-web/CYBHAT-Threat-Extractor.git)
+    git clone [[https://github.com/Hacker2022-web/CYBHAT-Threat-Extractor.git](https://github.com/Hacker2022-web/CYBHAT-Threat-Intelligence-IITK-Hackathon-final-project-.git)]([https://github.com/Hacker2022-web/CYBHAT-Threat-Extractor.git](https://github.com/Hacker2022-web/CYBHAT-Threat-Intelligence-IITK-Hackathon-final-project-.git)
     cd CYBHAT-Threat-Extractor
     ```
 
