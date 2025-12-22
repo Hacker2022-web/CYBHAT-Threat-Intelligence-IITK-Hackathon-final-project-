@@ -1,0 +1,76 @@
+{
+    "IoCs": {
+        "File Paths (Windows)": [
+            "C:\\Users\\[username]"
+        ],
+        "Filenames": [
+            "wscript.exe",
+            "Offsprint.gif",
+            "offspring.gif",
+            "shtasks.exe"
+        ],
+        "Domains": [
+            "ntusers.ini",
+            "abide.wav",
+            "lubszfpsqcrblebyb.tbi",
+            "symantec-enterprise-blogs.security.com",
+            "declined.delivered.maizuko",
+            "corolain.ru",
+            "desktop.ini",
+            "System.Net.DNS",
+            "net.webclient",
+            "get.php",
+            "atwuzxsjiobk.ql",
+            "Shell.Application",
+            "Backdoor.Pterodo"
+        ]
+    },
+    "TTPs": [
+        {
+            "tactic": "Execution",
+            "technique": "PowerShell",
+            "technique_id": "T1059.001"
+        },
+        {
+            "tactic": "Command and Control",
+            "technique": "DNS",
+            "technique_id": "T1071.004"
+        }
+    ],
+    "Malware": [],
+    "Threat Actors": [
+        "Conti"
+    ],
+    "Targeted Entities": [
+        "//b",
+        "C&C",
+        "Process Explorer",
+        "VBScript",
+        "Ukraine",
+        "Broadcom Software",
+        "Shuckworm",
+        "Shuckworm: Espionage Group Continues",
+        "Invoke-Expression",
+        "Gamaredon",
+        "Armageddon",
+        "ntusers.ini",
+        "Ukrainian",
+        "Offsprint.gif",
+        "VBScripts",
+        "IOC",
+        "SCHTASKS",
+        "PowerShell",
+        "DLL",
+        "Protection/Mitigation",
+        "the Symantec Protection Bulletin",
+        "Scheduled Tasks",
+        "Microsoft",
+        "intelligence",
+        "API",
+        "Symantec Endpoint"
+    ],
+    "original_filename": "Symantec-Shuckworm-Espionage-Group-Campaign-Against-Ukraine04-20-2022.pdf",
+    "report_filename": "output_Symantec-Shuckworm-Espionage-Group-Campaign-Against-Ukraine04-20-2022.json",
+    "timestamp": "2025-12-23T01:32:02.495301",
+    "report_id": "RPT-65BBAC06"
+}
