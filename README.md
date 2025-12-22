@@ -86,5 +86,9 @@ python app.py
 ![Another View](assets/dashboard_demo1.png)
 *Fig 1. Drag and Drop Interface*
 
+### 2. Analyze Reports
+1. Drag and drop your PDF threat reports into the upload zone.
+   > **Tip:** Don't have a report handy? Use the [sample_report.pdf](samples/sample_report.pdf) provided in the `samples/` folder to test the tool immediately.
+
 ## 📘 Project Documentation
 For a deep dive into the problem statement, methodology, and future scope, view our **[Hackathon Presentation Slides](docs/CYBHAT_Presentation.pdf)**.
