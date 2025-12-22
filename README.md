@@ -5,7 +5,7 @@
 ![Status](https://img.shields.io/badge/Status-Prototype-blue) ![Python](https://img.shields.io/badge/Python-3.7%2B-green) ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 ## 👥 Team CYBHAT
-*This project was developed in Jan 2025 for the **HACK IITK Cybersecurity Challenge 2024**.*
+*This project was developed in Jan 2025 for the **HACK IITK Cybersecurity Challenge 2025**.*
 
 * **Sahil Sudhir Dehadray** (Team Leader)
 * **Djatassiba Yaovi Joel**
